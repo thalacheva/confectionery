@@ -1,0 +1,300 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - anycable/rails/compatibility/rubocop
+  - background_job/rubocop
+  - ./tools/rubocop-receipt-bank/lib/rubocop-receipt-bank
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - app/controllers/api/users_controller.rb
+    - app/controllers/api_controller.rb
+    - bin/*
+    - config/initializers/apollo_protobuf.rb
+    - lib/role_requirement_system.rb
+    - node_modules/**/*
+    - vendor/**/*
+
+Layout/ClosingParenthesisIndentation: {Enabled: true}
+Layout/DefEndAlignment: {EnforcedStyleAlignWith: start_of_line}
+Layout/DotPosition: {EnforcedStyle: trailing}
+Layout/EmptyLineBetweenDefs:
+  AllowAdjacentOneLineDefs: true
+Layout/EndOfLine: {EnforcedStyle: lf}
+Layout/LineLength:
+  Max: 120
+  AllowURI: true
+Layout/MultilineAssignmentLayout:
+  Enabled: true
+  EnforcedStyle: new_line
+Layout/LineContinuationLeadingSpace: {Enabled: false}
+Layout/LineEndStringConcatenationIndentation: {EnforcedStyle: aligned}
+Layout/MultilineMethodCallIndentation: {EnforcedStyle: indented}
+Layout/MultilineOperationIndentation: {EnforcedStyle: indented}
+Layout/SpaceInLambdaLiteral: {EnforcedStyle: require_space}
+Layout/SpaceInsideHashLiteralBraces: {EnforcedStyle: no_space}
+Layout/IndentationWidth:
+  AllowedPatterns:
+    - "monitored .*, def "
+
+Lint/AmbiguousRange: {Enabled: false}
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*"
+    - "test/**/*"
+Lint/AmbiguousOperatorPrecedence: {Enabled: false}
+Lint/DuplicateBranch: {Enabled: false}
+Lint/UnusedBlockArgument: {AllowUnusedKeywordArguments: true}
+Lint/UnusedMethodArgument: {AllowUnusedKeywordArguments: true}
+Lint/MissingSuper: {AllowedParentClasses: [FormObject]}
+Lint/RedundantSafeNavigation: {Enabled: false}
+
+Metrics/AbcSize: {Enabled: false}
+# This cop is still relatively new as of RuboCop 0.46 and its behavior is
+# changing fast. The implementation in RuboCop 0.46 still has problems with
+# some files with DSLs such as routes.rb, app's environment configs and others.
+# This has been discussed here: https://github.com/bbatsov/rubocop/issues/3772
+# We should re-enable this cop in a future RuboCop implementation.
+Metrics/BlockLength: {Enabled: false}
+Metrics/ClassLength: {Enabled: false}
+Metrics/CyclomaticComplexity: {Enabled: false}
+Metrics/MethodLength: {Max: 80, CountAsOne: [heredoc]}
+Metrics/ModuleLength:
+  Max: 500
+  Exclude:
+    - "spec/**/*"
+    - "test/**/*"
+
+Metrics/ParameterLists: {CountKeywordArgs: false, Max: 6}
+Metrics/PerceivedComplexity: {Enabled: false}
+
+Naming/HeredocDelimiterNaming: {Enabled: false}
+Naming/MemoizedInstanceVariableName:
+  Exclude:
+    - "app/controllers/**/*"
+Naming/PredicateName:
+  ForbiddenPrefixes: [is_]
+  Exclude:
+    - "app/graphql/graph/relay/*_connection.rb"
+    - "app/graphql/graph/types/*_type.rb"
+Naming/RescuedExceptionsVariableName: {PreferredName: error}
+Naming/VariableNumber:
+  EnforcedStyle: non_integer
+  AllowedIdentifiers:
+    - A0
+    - A1
+    - A2
+    - A3
+    - a4
+    - A4
+    - A5
+    - A6
+    - addr1
+    - addr2
+    - address_1
+    - address_2
+    - address_line1
+    - address_line2
+    - alpha2
+    - billing_address_1
+    - billing_address_2
+    - billing_address_line_2
+    - billing_line_1
+    - billing_line_2
+    - business_line_1
+    - business_line_2
+    - callback_url_oauth2
+    - date_iso8601
+    - date_time12
+    - date_time24
+    - decode64
+    - fec_2
+    - force_utf8
+    - freetext1
+    - freetext2
+    - freetext3
+    - image_url2
+    - iso8601
+    - last4
+    - line1
+    - line2
+    - line_1
+    - line_2
+    - md5
+    - montant1
+    - pack_of_1
+    - pack_of_10
+    - pack_of_100
+    - pack_of_25
+    - pack_of_50
+    - preload_projects2
+    - enterprise_team_100
+    - enterprise_team_150
+    - enterprise_team_50
+    - project1
+    - project2
+    - projects1
+    - projects2
+    - published_on2
+    - publishing_status2
+    - query_string_md5
+    - s3
+    - secondary_integration_projects2
+    - send_image_url_to_sage50
+    - show_project2
+    - time12
+    - time24
+    - top_10
+    - urlsafe_base64
+    - use_project2
+    - suspended2
+    - include_suspended2
+
+Style/AsciiComments: {Enabled: false}
+Style/ArgumentsForwarding: {Enabled: false}
+Style/AccessModifierDeclarations: {Enabled: false}
+Style/ArrayIntersect: {Enabled: false}
+Style/Documentation: {Enabled: false}
+Style/EmptyMethod: {Enabled: false}
+Style/ExplicitBlockArgument: {Enabled: false}
+Style/FetchEnvVar: {Enabled: false}
+Style/FloatDivision: {Enabled: false}
+Style/HashEachMethods: {Enabled: false}
+Style/HashSyntax: {EnforcedShorthandSyntax: always}
+Style/HashTransformKeys: {Enabled: true}
+Style/HashTransformValues: {Enabled: true}
+Style/GlobalStdStream: {Enabled: false}
+Style/GuardClause: {Enabled: false}
+Style/FormatStringToken: {Enabled: false}
+Style/MapToHash: {Enabled: false}
+Style/MutableConstant: {Enabled: false}
+Style/ModuleFunction: {Enabled: false}
+Style/NumericPredicate: {Enabled: false}
+Style/PerlBackrefs: {Enabled: false}
+Style/SpecialGlobalVars: {Enabled: false}
+Style/TrailingCommaInArguments: {EnforcedStyleForMultiline: comma}
+Style/TrailingCommaInArrayLiteral: {EnforcedStyleForMultiline: comma}
+Style/TrailingCommaInHashLiteral: {EnforcedStyleForMultiline: comma}
+Style/DoubleNegation: {Enabled: false}
+Style/FrozenStringLiteralComment: {Enabled: false}
+Style/SingleLineBlockParams: {Enabled: false}
+Style/SignalException: {EnforcedStyle: only_raise}
+Style/LambdaCall: {EnforcedStyle: braces}
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  EnforcedStyle: omit_parentheses
+  AllowParenthesesInMultilineCall: true
+  AllowParenthesesInChaining: true
+  AllowParenthesesInCamelCaseMethod: true
+Style/MultilineBlockChain: {Enabled: false}
+Style/NumberedParameters: {Enabled: false}
+Style/NumberedParametersLimit: {Enabled: false}
+Style/OpenStructUse: {Enabled: false}
+Style/SymbolArray: {Enabled: true}
+Style/RedundantInitialize: {Enabled: false}
+Style/ReturnNilInPredicateMethodDefinition: {Enabled: false}
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%i': '()'
+    '%I': '()'
+    '%w': '()'
+    '%W': '()'
+Style/TrivialAccessors:
+  Exclude:
+    - db/seeds/**/*.rb
+Style/OptionalBooleanParameter:
+  Enabled: true
+  AllowedMethods:
+    - perform
+    - respond_to_missing?
+Style/YodaCondition: {EnforcedStyle: forbid_for_equality_operators_only}
+Style/Lambda: {Enabled: false}
+Style/ZeroLengthPredicate: {Enabled: false}
+
+RSpec/BeEq: {Enabled: false}
+RSpec/ExcessiveDocstringSpacing: {Enabled: false}
+RSpec/Capybara: {Enabled: false}
+RSpec/DescribeClass: {Enabled: false}
+RSpec/DescribedClass: {EnforcedStyle: explicit}
+RSpec/Dialect:
+  PreferredMethods:
+    context: describe
+RSpec/ExampleLength: {Enabled: false}
+RSpec/HookArgument: {Enabled: false}
+RSpec/InstanceVariable: {Enabled: false}
+RSpec/MessageChain: {Enabled: false}
+RSpec/MultipleExpectations: {Enabled: false}
+RSpec/MultipleMemoizedHelpers: {Enabled: false}
+RSpec/NamedSubject: {Enabled: false}
+RSpec/VerifiedDoubles: {Enabled: false}
+
+Rails/ActiveSupportOnLoad: {Enabled: false}
+Rails/ActionControllerTestCase: {Enabled: false}
+Rails/ActionFilter: {EnforcedStyle: action}
+Rails/ActionOrder: {Enabled: false}
+Rails/BulkChangeTable: {Enabled: false}
+Rails/Date:
+  Exclude:
+    - spec/**/*.rb
+Rails/DurationArithmetic: {Enabled: false}
+Rails/DynamicFindBy: {Enabled: false}
+Rails/Delegate: {Enabled: false}
+Rails/FilePath: {Enabled: false}
+Rails/HasAndBelongsToMany: {Enabled: false}
+Rails/HasManyOrHasOneDependent: {Enabled: false}
+Rails/MatchRoute: {Enabled: false}
+Rails/NegateInclude: {Enabled: false}
+Rails/Output:
+  Include:
+    - app/**/*.rb
+    - config/**/*.rb
+Rails/IndexBy: {Enabled: false}
+Rails/I18nLocaleAssignment:
+  Exclude:
+    - spec/**/admin/*.rb
+Rails/I18nLocaleTexts: {Enabled: false}
+Rails/Inquiry: {Enabled: false}
+Rails/OutputSafety: {Enabled: false}
+Rails/Pluck: {Enabled: false}
+Rails/ReversibleMigration:
+  Exclude:
+    - db/migrate/202203*.rb
+    - db/xavier/**/*.rb
+Rails/RedundantPresenceValidationOnBelongsTo: {Enabled: false}
+Rails/RequestReferer: {EnforcedStyle: referrer}
+Rails/SafeNavigation: {ConvertTry: true}
+Rails/SkipsModelValidations: {Enabled: false}
+Rails/SquishedSQLHeredocs: {Enabled: false}
+Rails/TimeZone:
+  Exclude:
+    - spec/**/*.rb
+Rails/UnknownEnv:
+  Environments: [production, development, test, demo, staging, sales_demo]
+Rails/WhereEquals: {Enabled: false}
+Rails/WhereMissing: {Enabled: false}
+Rails/WhereNot: {Enabled: false}
+
+BackgroundCop/PerformLater:
+  Exclude:
+    - spec/**/*_spec.rb
+BackgroundCop/PerformNow:
+  Exclude:
+    - spec/**/*_spec.rb
+
+ReceiptBank/NoExceptionNotification:
+  Enabled: false
+  Exclude:
+    - lib/assertions.rb
+
+ReceiptBank/EnumConstantName:
+  AllowedConstants:
+    - PublishAs
+    - SalesPublishAs
+    - ReportPublishAs
+    - ReceivedVia
+
+ReceiptBank/ClassConstantName: {Enabled: false}
+ReceiptBank/NoAssertionsInTests: {Enabled: true}
+ReceiptBank/NoTranslationAsConstant: {Enabled: true}
