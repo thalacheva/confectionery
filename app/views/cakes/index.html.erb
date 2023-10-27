@@ -1,2 +1,12 @@
 <h1>You can choose from variety of delicious cakes</h1>
-<p>Find me in app/views/cakes/index.html.erb</p>
+<ul>
+  <% @cakes.each do |cake| %>
+    <li>
+      <%= cake.title %>,
+      price - <%= cake.price %>,
+      is cake brown - <%= cake.brown? %>,
+      is cake small - <%= cake.small? %>,
+      shape - <%= cake.shape %>
+    </li>
+  <% end %>
+</ul>
